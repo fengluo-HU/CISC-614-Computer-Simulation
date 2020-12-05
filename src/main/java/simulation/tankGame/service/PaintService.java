@@ -404,7 +404,7 @@ public class  PaintService {
      */
     public void drawRight(Graphics g, GamePanel tgp, RealTimeGameData data) {
         if (data.getMapMakingFlag().equals(Boolean.TRUE)) {
-            g.drawString("Current chosen paint pen（Press 'C' to switch）", 620, 20);
+            g.drawString("Paint pen（Press 'C' to switch）", 620, 20);
             if (data.getCurrentStuff() == StuffTypeEnum.IRON) {
                 drawStuff(g, rightIron, tgp);
             } else if (data.getCurrentStuff() == StuffTypeEnum.BRICK) {

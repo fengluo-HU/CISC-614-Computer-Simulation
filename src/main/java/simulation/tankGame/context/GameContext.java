@@ -96,40 +96,40 @@ public class GameContext {
      * @param level
      */
     private void initGameData(int level) {
-        realTimeGameData = new RealTimeGameData();
+        this.realTimeGameData = new RealTimeGameData();
 
         for (int i = 0; i < GameConstants.INIT_ENEMY_TANK_IN_MAP_NUM; i++) {
             EnemyTank enemy = new EnemyTank((i) * 140 + 20, -20, DirectionEnum.SOUTH);
             enemy.setLocation(i);
-            realTimeGameData.getEnemies().add(enemy);
+            this.realTimeGameData.getEnemies().add(enemy);
         }
         MyTank myTank = new MyTank(300, 620, DirectionEnum.NORTH);
-        realTimeGameData.getMyTanks().add(myTank);
+        this.realTimeGameData.getMyTanks().add(myTank);
 
-        realTimeGameData.setMap(LevelEnum.getByLevel(level).getMap());
+        this.realTimeGameData.setMap(LevelEnum.getByLevel(level).getMap());
         //realTimeGameData.setMap(new Map(MapParser.getMapFromXml()));
-        realTimeGameData.setEnemyTankNum(GameConstants.INIT_ENEMY_TANK_NUM);
-        realTimeGameData.setMyTankNum(GameConstants.INIT_MY_TANK_NUM);
-        realTimeGameData.setMyBulletNum(GameConstants.MY_TANK_INIT_BULLET_NUM);
-        realTimeGameData.setBeKilled(0);
-        realTimeGameData.setDy(600);
-        realTimeGameData.setLevel(level);
+        this.realTimeGameData.setEnemyTankNum(GameConstants.INIT_ENEMY_TANK_NUM);
+        this.realTimeGameData.setMyTankNum(GameConstants.INIT_MY_TANK_NUM);
+        this.realTimeGameData.setMyBulletNum(GameConstants.MY_TANK_INIT_BULLET_NUM);
+        this.realTimeGameData.setBeKilled(0);
+        this.realTimeGameData.setDy(600);
+        this.realTimeGameData.setLevel(level);
         threadTaskExecutor.startEnemyTankThreads();
         logger.info("Init Game Data end...");
     }
 
 
     private void reset(int level) {
-        realTimeGameData.reset();
+        this.realTimeGameData.reset();
         initGameData(level);
         logger.info("Init Game Data...");
     }
 
 
     public void startGame() {
-        realTimeGameData.setStart(Boolean.TRUE);
-        realTimeGameData.getEnemies().forEach(t -> t.setActivate(Boolean.TRUE));
-        realTimeGameData.getMyTanks().forEach(t -> t.setActivate(Boolean.TRUE));
+        this.realTimeGameData.setStart(Boolean.TRUE);
+        this.realTimeGameData.getEnemies().forEach(t -> t.setActivate(Boolean.TRUE));
+        this.realTimeGameData.getMyTanks().forEach(t -> t.setActivate(Boolean.TRUE));
     }
 
     public void startLevel(int level) {
